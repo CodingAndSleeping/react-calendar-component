@@ -15,6 +15,16 @@ export interface SpaceProps extends React.HTMLAttributes<HTMLDivElement> {
   wrap?: boolean
 }
 
+const spaceSize = {
+  small: 8,
+  middle: 16,
+  large: 24,
+}
+
+function getNumberSize(size: SizeType) {
+  return typeof size === 'string' ? spaceSize[size] : size || 0
+}
+
 function Space(props: SpaceProps) {
   const { space } = React.useContext(ConfigContext)
   console.log(space)
@@ -38,18 +48,12 @@ function Space(props: SpaceProps) {
 
     return (
       <>
-        <div
-          className='space-item'
-          key={key}
-        >
+        <div className='space-item' key={key}>
           {child}
         </div>
 
         {index < childNodes.length && split && (
-          <span
-            className={`${className}-split`}
-            style={style}
-          >
+          <span className={`${className}-split`} style={style}>
             {split}
           </span>
         )}
@@ -71,16 +75,6 @@ function Space(props: SpaceProps) {
   )
 
   // 处理 size
-
-  const spaceSize = {
-    small: 8,
-    middle: 16,
-    large: 24,
-  }
-  function getNumberSize(size: SizeType) {
-    return typeof size === 'string' ? spaceSize[size] : size || 0
-  }
-
   const otherStyle: React.CSSProperties = {}
 
   const [horizontalSize, VerticalSize] = React.useMemo(() => {
@@ -96,11 +90,7 @@ function Space(props: SpaceProps) {
   }
 
   return (
-    <div
-      className={cn}
-      style={{ ...otherStyle, ...style }}
-      {...rest}
-    >
+    <div className={cn} style={{ ...otherStyle, ...style }} {...rest}>
       {nodes}
     </div>
   )
