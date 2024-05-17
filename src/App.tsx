@@ -7,11 +7,11 @@ function App() {
       <ConfigProvider space={{ size: 20 }}>
         <Space
           className='container'
-          style={{ width: '300px', height: '300px' }}
+          style={{ width: '100px', height: '100px', backgroundColor: 'blue' }}
           direction='vertical'
           align='end'
           wrap={true}
-          // size={['large', 'small']}
+          size={['large', 'small']}
           split={<div>11</div>}
         >
           <div

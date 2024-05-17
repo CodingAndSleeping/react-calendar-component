@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import React from 'react'
+import React, { Fragment } from 'react'
 import './index.scss'
 import { ConfigContext } from './ConfigProvider'
 
@@ -27,7 +27,6 @@ function getNumberSize(size: SizeType) {
 
 function Space(props: SpaceProps) {
   const { space } = React.useContext(ConfigContext)
-  console.log(space)
 
   const {
     className,
@@ -47,17 +46,15 @@ function Space(props: SpaceProps) {
     const key = (child && child.key) || `space-item-${index}`
 
     return (
-      <>
-        <div className='space-item' key={key}>
-          {child}
-        </div>
+      <Fragment key={key}>
+        <div className='space-item'>{child}</div>
 
-        {index < childNodes.length && split && (
+        {index < childNodes.length - 1 && split && (
           <span className={`${className}-split`} style={style}>
             {split}
           </span>
         )}
-      </>
+      </Fragment>
     )
   })
 
