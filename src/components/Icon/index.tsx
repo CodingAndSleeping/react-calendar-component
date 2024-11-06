@@ -46,7 +46,7 @@ const Icon: ForwardRefRenderFunction<
       style={style}
       width={width}
       height={height}
-      fill="currentColor"
+      fill='currentColor'
       {...rest}
     >
       {children}

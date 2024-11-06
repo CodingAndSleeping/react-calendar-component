@@ -1,39 +1,56 @@
 import Space from './components/Space'
 import ConfigProvider from './components/Space/ConfigProvider'
+import Watermark from './components/Watermark'
 
 function App() {
   return (
     <div className='App'>
-      <ConfigProvider space={{ size: 20 }}>
-        <Space
-          className='container'
-          style={{ width: '100px', height: '100px', backgroundColor: 'blue' }}
-          direction='vertical'
-          align='end'
-          wrap={true}
-          size={['large', 'small']}
-          split={<div>11</div>}
-        >
-          <div
-            className='box'
-            style={{ width: '100px', height: '100px', background: 'green' }}
-          >
-            1
-          </div>
-          <div
-            className='box'
-            style={{ width: '100px', height: '100px', background: 'green' }}
-          >
-            2
-          </div>
-          <div
-            className='box'
-            style={{ width: '100px', height: '100px', background: 'green' }}
-          >
-            3
-          </div>
-        </Space>
-      </ConfigProvider>
+      <Watermark content={['React', 'Space']}>
+        <div style={{ height: 800 }}>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos quod
+            deserunt quidem quas in rem ipsam ut nesciunt asperiores dignissimos
+            recusandae minus, eaque, harum exercitationem esse sapiente?
+            Eveniet, id provident!
+          </p>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos quod
+            deserunt quidem quas in rem ipsam ut nesciunt asperiores dignissimos
+            recusandae minus, eaque, harum exercitationem esse sapiente?
+            Eveniet, id provident!
+          </p>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos quod
+            deserunt quidem quas in rem ipsam ut nesciunt asperiores dignissimos
+            recusandae minus, eaque, harum exercitationem esse sapiente?
+            Eveniet, id provident!
+          </p>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos quod
+            deserunt quidem quas in rem ipsam ut nesciunt asperiores dignissimos
+            recusandae minus, eaque, harum exercitationem esse sapiente?
+            Eveniet, id provident!
+          </p>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos quod
+            deserunt quidem quas in rem ipsam ut nesciunt asperiores dignissimos
+            recusandae minus, eaque, harum exercitationem esse sapiente?
+            Eveniet, id provident!
+          </p>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos quod
+            deserunt quidem quas in rem ipsam ut nesciunt asperiores dignissimos
+            recusandae minus, eaque, harum exercitationem esse sapiente?
+            Eveniet, id provident!
+          </p>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos quod
+            deserunt quidem quas in rem ipsam ut nesciunt asperiores dignissimos
+            recusandae minus, eaque, harum exercitationem esse sapiente?
+            Eveniet, id provident!
+          </p>
+        </div>
+      </Watermark>
     </div>
   )
 }
