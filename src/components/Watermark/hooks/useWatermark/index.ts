@@ -23,6 +23,8 @@ export default function useWatermark(params: WatermarkOptions) {
   // 存储水印div
   const watermarkDiv = useRef<HTMLDivElement>()
 
+  const mutationObserver = useRef<MutationObserver>()
+
   const container = mergedOptions.getContainer()
 
   const { zIndex, gap } = mergedOptions
@@ -58,6 +60,42 @@ export default function useWatermark(params: WatermarkOptions) {
       }
       // 设置水印div的样式
       watermarkDiv.current?.setAttribute('style', wnStyle.trim())
+
+      if (container) {
+        mutationObserver.current?.disconnect()
+        mutationObserver.current = new MutationObserver(mutations => {
+          const isChanged = mutations.some((mutation: MutationRecord) => {
+            let flag = false
+
+            if (mutation.removedNodes.length) {
+              flag = Array.from(mutation.removedNodes).some(
+                node => node === watermarkDiv.current
+              )
+            }
+
+            if (
+              mutation.type === 'attributes' &&
+              mutation.target === watermarkDiv.current
+            ) {
+              flag = true
+            }
+
+            return flag
+          })
+
+          if (isChanged) {
+            watermarkDiv.current?.parentNode?.removeChild(watermarkDiv.current)
+            watermarkDiv.current = void 0
+            drawWatermark()
+          }
+        })
+
+        mutationObserver.current.observe(container, {
+          attributes: true,
+          childList: true,
+          subtree: true,
+        })
+      }
     })
   }
 

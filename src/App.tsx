@@ -1,5 +1,3 @@
-import Space from './components/Space'
-import ConfigProvider from './components/Space/ConfigProvider'
 import Watermark from './components/Watermark'
 
 function App() {
